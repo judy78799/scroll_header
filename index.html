@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>다이슨 공식몰</title>
+</head>
+<body>
+    <header id="header" class="over">
+        <div id="logo"><a><img src="./img/logo.png" alt="" class="logo_img"></a></div>
+            <div class="menu">
+                <button class="p">제품</button>
+                <button class="p">제품 등록</button>
+                <button class="p">매장안내</button>
+                <button class="p">Dyson Live</button>
+                <button class="p">고객지원</button>
+                <button class="p">이벤트</button>
+
+            </div>
+            <div class="search">
+                <p class="search_bar">검색</p>
+                <button><img src="./img/search.png" alt="" class="logo_box"></button>
+                <button><img src="./img/shop.png" alt="" class="logo_box2"></button>
+            </div>
+        </header>
+
+        <video id="myVideo" style="width:100%" autoplay="" loop="" muted="" playsinline="">
+            <source src="https://gateway-eu.assetsadobe.com/DMGateway/public-ssl/dyson/_renditions_/c27/c278ea8a-75ee-434b-82a1-62377749d2fb/avs/DYS_Dyson-Week-2022_Global_EN_SEE_THINK_XCAT_16x9_CLEAN_MASTER_5MB_15s-0x720-3000k.mp4" type="video/mp4">
+        </video>
+
+        <section class="section01">
+            <div class="section01_box">
+            <img src="./img/title_logo.png" alt="" class="title_logo">
+            <div class="text">
+                <p class="text_p1">신제품</p>
+                <p class="text_p">하나의 툴로</p>
+                <p class="text_p">브러시와 잔머리 정리까지</p>
+                <button class="buy_button">구매하기</button>
+            </div>
+        </div>
+        </section>
+        
+        <section class="section02">
+                <div id="scroll-container">
+                    <p id="scroll-progress">0%</p>
+                    <p class="scroll_text">슈퍼소닉에 만족한다.</p>
+                </div>
+            </div>
+        </section>
+        <button id="topBtn">Top</button>
+    <footer class="footer">
+
+        <div class="box1">
+            <p class="box2_text">한국</p>
+            <p class="box2_text2">언어 및 지역변경</p>
+        </div>
+        <div class="box2">
+        <p class="box2_text">배송정보</p>
+        <p  class="box2_text">채용</p> 
+        <p  class="box2_text">언론</p> 
+        <p  class="box2_text">웹사이트 사용 약관</p> 
+        <p  class="box2_text">AM04/5리콜</p>
+        <p  class="box2_text">다이슨 하이퍼미디엄&#153;모터</p>
+        <p  class="box2_text">다이슨 환경정책</p>
+        <p  class="box2_text">다이슨 지속가능성</p>
+        <p  class="box2_text">위조 다이슨 기술 판별 안내</p>
+        </div>
+        <div class="box3">
+            <p  class="box2_text">개인정보방침</p>
+            <p  class="box2_text">다이슨 글로벌 개인정보처리방침</p>
+            <p class="box2_text">쿠키 취급 방침</p>
+            <p class="box2_text">James Dyson 재단</p>
+        </div>
+    </footer>
+
+
+    <script>
+
+    //마우스 이벤트 태그를 많이 사용하는 경우, 전역 변수로 만들어버림.
+    var myHeader = document.getElementById("header");
+    // console.log(document.getElementById("header");   
+    myHeader.onmouseover = function(){
+        console.log("this"); //this 가 가리키는 대상. 이벤트가 걸린 대상임
+        //console.log("myHeader");
+        this.classList.add("over");//this.classList?
+        
+        //this.style.backgroundColor="white";
+        //this.style.backgroundcolor("a")="Black";
+    }
+    myHeader.onmouseout = function(){
+        //console.log("마우스 아웃");
+        this.classList.remove("over");
+        //this.style.backgroundColor="rgba(0,0,0,0.5)";
+    }
+    //스크롤 이벤트 window.addEventListener(); 이것 틀 부터 써야함.
+    window.addEventListener("scroll",function(){
+        console.log(window.scrollY);
+        if(window.scrollY>200){
+        console.log("220이상");
+        //myHeader.style.height= 100+"px"; // 높이만 올라간다. SiteLogo라는 글씨는 올라가지 않는다.
+        myHeader.style.top= -100+"px";
+        //myHeader.classList.add("down");
+        //myHeader.classList.remove("up");
+    
+        }else{
+            console.log("200미만");
+            //myHeader.style.height=0+"px";
+            myHeader.style.top= 0+"px";
+
+            //myHeader.classList.remove("down");//but 이렇게 사용하게 되면 반복이 되지 않는다. 일회성임.
+            //myHeader.classList.add("up"); 
+        }
+    });
+
+
+    // 스크롤 이벤트 핸들러 등록
+window.addEventListener('scroll', function() {
+  // 스크롤 위치 계산
+    const scrollPosition = window.scrollY;
+  // 전체 페이지의 높이 계산
+    const pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  // 스크롤 위치에 따라 백분율 계산
+  const scrollPercentage = Math.round(scrollPosition / pageHeight * 100);
+  // 백분율 업데이트
+    const progressElement = document.getElementById('scroll-progress');
+    progressElement.innerText = scrollPercentage + '%';
+    progressElement.style.opacity = 1;
+});
+
+//Top버튼 구현하기
+function scrollToTop() {
+    // 현재 스크롤 위치를 가져옵니다.
+    const scrollY = window.scrollY; //상수 scrollY는 윈도우의 scrollY값을 가져온다.
+
+    // 스크롤 위치가 0보다 크면, 다시 scrollToTop 함수를 호출합니다.
+    if (scrollY > 0) {
+        requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, scrollY - scrollY / 35); //top으로 스크롤 하여 '0' 으로 도착(맨위), Y에서 Y값으로 스크롤/ 35속도 만큼.
+    }
+    const topBtn = document.getElementById("topBtn");
+
+    }
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 100) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
+    });
+
+    topBtn.addEventListener("click", scrollToTop);
+
+    </script>
+</body>
+</html>
